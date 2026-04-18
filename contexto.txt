@@ -1,0 +1,16 @@
+El proyecto consiste en diseñar y desarrollar un entorno de ciberseguridad tipo Capture The Flag (CTF)
+con 12 retos progresivos que simulan escenarios reales de ataque y análisis, 
+integrando técnicas como recopilación pasiva con herramientas como theHarvester, 
+reconocimiento activo mediante escaneos con Nmap , explotación de vulnerabilidades 
+web como SQL Injection y XSS , uso de esteganografía para ocultar información, 
+explotación con Metasploit y análisis de vulnerabilidades basadas en CVE; 
+sin embargo, a diferencia de un laboratorio tradicional, todo el entorno será 
+implementado exclusivamente dentro de una única máquina Kali Linux, donde se 
+configurará un servidor web local en PHP que contendrá los retos, y se desplegarán 
+servicios y aplicaciones vulnerables dentro del mismo sistema (usando localhost) para 
+simular tanto el rol de atacante como de víctima, permitiendo ejecutar pruebas, 
+explotar vulnerabilidades y capturar banderas en un entorno controlado, 
+autónomo y fácilmente replicable sin necesidad de múltiples máquinas virtuales o 
+configuraciones de red complejas.
+se utilizara solamente php puro sin frameworks, ademas se maneja todo con xampp, el proyecto esta dentro de 
+la carpeta htdocs
