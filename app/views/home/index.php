@@ -8,6 +8,7 @@
             de ciberseguridad a su propio ritmo, enfrentandose a desafios que van desde lo basico
             hasta lo avanzado.
         </p>
+         
         <div class="hero-actions">
             <a class="button" href="<?= htmlspecialchars(route('retos'), ENT_QUOTES, 'UTF-8'); ?>">Ver retos</a>
         </div>

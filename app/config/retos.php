@@ -10,8 +10,8 @@ return [
         'categoria' => 'Reconocimiento',
         'dificultad' => 'Facil',
         'puntaje' => 50,
-        'objetivo' => 'Obtener informacion publica del objetivo sin interactuar directamente con el, identificando correos, subdominios y pistas expuestas.',
-        'herramientas' => ['theHarvester', 'WHOIS', 'busqueda avanzada'],
+        'objetivo' => 'Obtener informacion publica del objetivo sin interactuar directamente con el, identificando posibles mensajes olvidados o datos resagados.',
+        'herramientas' => ['Terminal', 'inspeccion', 'busqueda avanzada'],
         'estado' => 'Disponible',
     ],
     [

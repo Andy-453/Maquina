@@ -5,6 +5,12 @@ declare(strict_types=1);
 require_once APP_PATH . '/helpers/url_helper.php';
 
 $currentUser = $_SESSION['user'] ?? null;
+$currentPoints = 0;
+
+if ($currentUser !== null) {
+    $progressKey = (string) ($currentUser['username'] ?? 'guest');
+    $currentPoints = (int) ($_SESSION['challenge_progress'][$progressKey]['points'] ?? 0);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,6 +40,7 @@ $currentUser = $_SESSION['user'] ?? null;
                 <?php if ($currentUser !== null): ?>
                     <a href="<?= htmlspecialchars(route(), ENT_QUOTES, 'UTF-8'); ?>">Inicio</a>
                     <a href="<?= htmlspecialchars(route('retos'), ENT_QUOTES, 'UTF-8'); ?>">Retos</a>
+                    <span class="score-pill"><?= htmlspecialchars((string) $currentPoints, ENT_QUOTES, 'UTF-8'); ?> pts</span>
                     <span class="nav-user"><?= htmlspecialchars($currentUser['username'] ?? '', ENT_QUOTES, 'UTF-8'); ?></span>
                     <form class="nav-form" method="post" action="<?= htmlspecialchars(route('logout'), ENT_QUOTES, 'UTF-8'); ?>">
                         <button type="submit">Salir</button>

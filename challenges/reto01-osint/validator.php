@@ -3,6 +3,6 @@
 declare(strict_types=1);
 
 return [
-    'flag_format' => 'flag{osint_*}',
+    'flag' => 'ReCo#_Pa$!ivO',
     'status' => 'pending',
 ];
