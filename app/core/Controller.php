@@ -10,4 +10,22 @@ abstract class Controller
     {
         View::render($view, $data);
     }
+
+    protected function redirect(string $path = ''): void
+    {
+        $baseUrl = rtrim(Container::get('config')['base_url'] ?? '', '/');
+        $location = $path === ''
+            ? ($baseUrl !== '' ? $baseUrl : '/')
+            : $baseUrl . '/' . ltrim($path, '/');
+
+        header('Location: ' . $location);
+        exit;
+    }
+
+    protected function requireAuth(): void
+    {
+        if (!isset($_SESSION['user'])) {
+            $this->redirect('login');
+        }
+    }
 }

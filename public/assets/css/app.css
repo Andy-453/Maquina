@@ -78,14 +78,11 @@ code {
 }
 
 .brand-mark {
-    display: grid;
-    place-items: center;
     width: 44px;
     height: 44px;
     border-radius: 14px;
-    color: #061117;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--accent), #93ffd9);
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .brand small {
@@ -94,8 +91,13 @@ code {
     color: var(--muted);
 }
 
-.site-nav {
+.site-nav,
+.nav-form {
     display: flex;
+    align-items: center;
+}
+
+.site-nav {
     gap: 1rem;
     flex-wrap: wrap;
 }
@@ -105,8 +107,27 @@ code {
 }
 
 .site-nav a:hover,
-.challenge-card a:hover {
+.challenge-card a:hover,
+.nav-form button:hover {
     color: var(--accent);
+}
+
+.nav-user {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.nav-form {
+    margin: 0;
+}
+
+.nav-form button {
+    padding: 0;
+    border: 0;
+    color: var(--muted);
+    font: inherit;
+    background: transparent;
+    cursor: pointer;
 }
 
 .site-main {
@@ -194,6 +215,85 @@ code {
 .button-secondary {
     color: var(--text);
     background: rgba(255, 255, 255, 0.08);
+}
+
+.auth-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.auth-copy,
+.auth-form {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(14px);
+}
+
+.auth-copy {
+    padding: 2rem;
+}
+
+.auth-copy h1 {
+    margin: 0 0 0.9rem;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.05;
+}
+
+.auth-copy p,
+.form-note {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.auth-form {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.auth-form label {
+    display: grid;
+    gap: 0.45rem;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.auth-form input {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.8rem 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    color: var(--text);
+    font: inherit;
+    background: rgba(255, 255, 255, 0.08);
+    outline: none;
+}
+
+.auth-form input:focus {
+    border-color: rgba(75, 212, 167, 0.65);
+}
+
+.form-alert {
+    margin: 0;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(255, 126, 126, 0.34);
+    border-radius: 14px;
+    color: #ffdede;
+    background: rgba(255, 126, 126, 0.1);
+}
+
+.form-note {
+    margin: 0;
+}
+
+.form-note a {
+    color: var(--accent);
+    font-weight: 700;
 }
 
 .stat-list {

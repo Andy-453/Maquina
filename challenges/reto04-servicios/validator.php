@@ -3,6 +3,6 @@
 declare(strict_types=1);
 
 return [
-    'flag_format' => 'flag{upload_*}',
+    'flag_format' => 'flag{services_*}',
     'status' => 'pending',
 ];

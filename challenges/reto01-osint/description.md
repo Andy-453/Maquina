@@ -1,3 +1,3 @@
-# Reto 01 - OSINT Inicial
+# Reto 01 - Reconocimiento pasivo
 
-Objetivo: descubrir informacion publica relevante del objetivo antes de tocar servicios activos.
+Objetivo: obtener informacion publica del objetivo sin interactuar directamente con el, apoyandose en fuentes abiertas para descubrir correos, subdominios y pistas ocultas.

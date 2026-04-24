@@ -3,6 +3,6 @@
 declare(strict_types=1);
 
 return [
-    'flag_format' => 'flag{nmap_*}',
+    'flag_format' => 'flag{network_*}',
     'status' => 'pending',
 ];

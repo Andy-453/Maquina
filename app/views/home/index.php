@@ -1,14 +1,15 @@
 <section class="hero">
     <div class="hero-copy">
-        <span class="eyebrow">Laboratorio local</span>
-        <h1>Base web para un CTF progresivo en una sola maquina</h1>
+        <span class="eyebrow">REACH</span>
+        <h1>CTF PROGRESIVO REACH</h1>
         <p>
-            Esta estructura separa el portal principal, la logica del sistema, los retos y los servicios vulnerables
-            para que el proyecto sea mantenible incluso cuando crezca a 12 escenarios o mas.
+            REACH es una plataforma de CTF disenada para ofrecer una experiencia de aprendizaje progresiva.
+            Con retos cuidadosamente estructurados, los participantes pueden desarrollar sus habilidades
+            de ciberseguridad a su propio ritmo, enfrentandose a desafios que van desde lo basico
+            hasta lo avanzado.
         </p>
         <div class="hero-actions">
             <a class="button" href="<?= htmlspecialchars(route('retos'), ENT_QUOTES, 'UTF-8'); ?>">Ver retos</a>
-            <a class="button button-secondary" href="#mapa">Ver arquitectura</a>
         </div>
     </div>
     <aside class="hero-card">
@@ -21,10 +22,9 @@
     </aside>
 </section>
 
-
 <section class="panel">
     <span class="eyebrow">Retos destacados</span>
-    <h2>Primeros modulos preparados</h2>
+    <h2>Primeros modulos</h2>
     <div class="challenge-grid">
         <?php foreach ($retos as $reto): ?>
             <article class="challenge-card">

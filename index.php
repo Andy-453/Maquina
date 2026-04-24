@@ -7,6 +7,11 @@ require __DIR__ . '/app/bootstrap.php';
 $router = new App\Core\Router();
 
 $router->get('/', [App\Controllers\HomeController::class, 'index']);
+$router->get('/login', [App\Controllers\AuthController::class, 'login']);
+$router->post('/login', [App\Controllers\AuthController::class, 'authenticate']);
+$router->get('/registro', [App\Controllers\AuthController::class, 'register']);
+$router->post('/registro', [App\Controllers\AuthController::class, 'store']);
+$router->post('/logout', [App\Controllers\AuthController::class, 'logout']);
 $router->get('/retos', [App\Controllers\ChallengeController::class, 'index']);
 $router->get('/reto', [App\Controllers\ChallengeController::class, 'show']);
 

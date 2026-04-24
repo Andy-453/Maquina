@@ -11,6 +11,8 @@ final class ChallengeController extends Controller
 {
     public function index(): void
     {
+        $this->requireAuth();
+
         $this->view('retos/index', [
             'retos' => Challenge::all(),
         ]);
@@ -18,6 +20,8 @@ final class ChallengeController extends Controller
 
     public function show(): void
     {
+        $this->requireAuth();
+
         $slug = $_GET['slug'] ?? null;
         $reto = Challenge::findBySlug($slug);
 

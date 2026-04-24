@@ -1,4 +1,4 @@
-# Maquina CTF
+# CTF REACH
 
 Base de proyecto para un laboratorio Capture The Flag en `PHP` puro sobre `XAMPP`.
 

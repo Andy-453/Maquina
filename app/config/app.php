@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 return [
-    'name' => 'Maquina CTF',
-    'tagline' => 'Entorno local de ciberseguridad con retos progresivos en PHP puro.',
+    'name' => 'CTF REACH',
+    'tagline' => 'Todos lo logramos tarde o temprano. Mejor ponte en marcha.',
     'base_url' => '/maquina',
     'timezone' => 'America/Bogota',
     'session_name' => 'maquina_ctf',

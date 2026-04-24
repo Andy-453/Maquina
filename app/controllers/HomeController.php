@@ -11,6 +11,8 @@ final class HomeController extends Controller
 {
     public function index(): void
     {
+        $this->requireAuth();
+
         $retos = Challenge::all();
 
         $stats = [

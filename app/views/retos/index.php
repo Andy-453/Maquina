@@ -1,9 +1,10 @@
 <section class="panel">
-    <span class="eyebrow">Listado</span>
-    <h1>Ruta de 12 retos</h1>
+    <span class="eyebrow">RETOS</span>
+    <h1>Desafíos Cibernéticos</h1>
     <p>
-        Esta vista centraliza el progreso del laboratorio y sirve como punto de entrada para cada escenario.
-        Cada reto tiene un slug propio para facilitar expansion y mantenimiento.
+        EN ESTA CTF VAS A ENCONTRAR RETOS DE DIFERENTES CATEGORIAS Y DIFICULTADES, CADA RETO TE OFRECERA UNA
+        EXPERIENCIA UNICA PARA DESARROLLAR TUS HABILIDADES EN CIBERSEGURIDAD.
+        EXPLORA LOS RETOS DISPONIBLES Y ENFRENTA LOS DESAFIOS QUE TE ESPERAN.
     </p>
 </section>
 

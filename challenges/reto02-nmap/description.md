@@ -1,3 +1,3 @@
-# Reto 02 - Escaneo de Servicios
+# Reto 02 - Descubrimiento de red
 
-Objetivo: enumerar servicios expuestos en localhost y construir una primera superficie de ataque.
+Objetivo: identificar que hosts se encuentran activos en la red usando un escaneo basico con Nmap antes de profundizar en el objetivo.
