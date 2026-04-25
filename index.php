@@ -14,6 +14,7 @@ $router->post('/registro', [App\Controllers\AuthController::class, 'store']);
 $router->post('/logout', [App\Controllers\AuthController::class, 'logout']);
 $router->get('/retos', [App\Controllers\ChallengeController::class, 'index']);
 $router->get('/reto', [App\Controllers\ChallengeController::class, 'show']);
+$router->post('/reto/respuesta', [App\Controllers\ChallengeController::class, 'verifyAnswer']);
 $router->post('/reto/verificar', [App\Controllers\ChallengeController::class, 'verify']);
 
 $router->dispatch($_SERVER['REQUEST_URI'] ?? '/', $_SERVER['REQUEST_METHOD'] ?? 'GET');

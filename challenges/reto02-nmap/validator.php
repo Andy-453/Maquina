@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'flag_format' => 'PU#%to_3#Con%ado',
+    'answer_contains' => 'nmap',
+    'flag' => 'PU#%to_3#Con%ado',
     'status' => 'pending',
 ];

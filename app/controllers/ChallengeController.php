@@ -13,8 +13,13 @@ final class ChallengeController extends Controller
     {
         $this->requireAuth();
 
+        $retos = Challenge::all();
+        foreach ($retos as &$reto) {
+            $reto['isCompleted'] = $this->isCompleted($reto['slug']);
+        }
+
         $this->view('retos/index', [
-            'retos' => Challenge::all(),
+            'retos' => $retos,
         ]);
     }
 
@@ -35,11 +40,45 @@ final class ChallengeController extends Controller
             'reto' => $reto,
             'nextReto' => $this->findNextChallenge((int) $reto['numero']),
             'flagResult' => $_SESSION['flag_result'] ?? null,
+            'answerResult' => $_SESSION['answer_result'] ?? null,
             'isCompleted' => $this->isCompleted($reto['slug']),
             'totalPoints' => $this->currentPoints(),
         ]);
 
         unset($_SESSION['flag_result']);
+        unset($_SESSION['answer_result']);
+    }
+
+    public function verifyAnswer(): void
+    {
+        $this->requireAuth();
+
+        $slug = trim((string) ($_POST['slug'] ?? ''));
+        $answer = trim((string) ($_POST['answer'] ?? ''));
+        $reto = Challenge::findBySlug($slug);
+
+        if ($reto === null) {
+            http_response_code(404);
+            $this->view('layout/404', ['path' => '/reto?slug=' . $slug]);
+            return;
+        }
+
+        $validator = $this->validatorFor($reto);
+        $flag = (string) ($validator['flag'] ?? $validator['flag_format'] ?? '');
+
+        if ($this->isValidAnswer($validator, $answer) && $flag !== '') {
+            $_SESSION['answer_result'] = [
+                'type' => 'success',
+                'message' => 'Respuesta correcta. Tu flag es: ' . $flag,
+            ];
+        } else {
+            $_SESSION['answer_result'] = [
+                'type' => 'error',
+                'message' => 'Respuesta incorrecta. Revisa el resultado del escaneo.',
+            ];
+        }
+
+        $this->redirect('reto?slug=' . $slug);
     }
 
     public function verify(): void
@@ -66,8 +105,8 @@ final class ChallengeController extends Controller
             $_SESSION['flag_result'] = [
                 'type' => 'success',
                 'message' => $alreadyCompleted
-                    ? 'Flag correcta. Este reto ya estaba completado.'
-                    : 'Flag correcta. Se sumaron ' . (int) $reto['puntaje'] . ' puntos.',
+                    ? 'Este reto ya estaba completado.'
+                    : 'Se sumaron ' . (int) $reto['puntaje'] . ' puntos.',
             ];
         } else {
             $_SESSION['flag_result'] = [
@@ -96,8 +135,7 @@ final class ChallengeController extends Controller
             return false;
         }
 
-        $validatorFile = dirname(__DIR__, 2) . '/challenges/' . $reto['slug'] . '/validator.php';
-        $validator = is_file($validatorFile) ? require $validatorFile : [];
+        $validator = $this->validatorFor($reto);
 
         if (isset($validator['flag'])) {
             $flag = (string) $validator['flag'];
@@ -127,6 +165,55 @@ final class ChallengeController extends Controller
         $pattern = '/^' . str_replace('\*', '.+', preg_quote($format, '/')) . '$/i';
 
         return preg_match($pattern, $submittedFlag) === 1;
+    }
+
+    private function validatorFor(array $reto): array
+    {
+        $validatorFile = dirname(__DIR__, 2) . '/challenges/' . $reto['slug'] . '/validator.php';
+        $validator = is_file($validatorFile) ? require $validatorFile : [];
+
+        return is_array($validator) ? $validator : [];
+    }
+
+    private function isValidAnswer(array $validator, string $answer): bool
+    {
+        if ($answer === '') {
+            return false;
+        }
+
+        $validAnswers = [];
+        $normalizedAnswer = $this->normalizeAnswer($answer);
+
+        if (isset($validator['answer_contains'])) {
+            $needle = $this->normalizeAnswer((string) $validator['answer_contains']);
+
+            if ($needle !== '' && str_contains($normalizedAnswer, $needle)) {
+                return true;
+            }
+        }
+
+        if (isset($validator['answer'])) {
+            $validAnswers[] = (string) $validator['answer'];
+        }
+
+        if (isset($validator['answers']) && is_array($validator['answers'])) {
+            foreach ($validator['answers'] as $validAnswer) {
+                $validAnswers[] = (string) $validAnswer;
+            }
+        }
+
+        foreach ($validAnswers as $validAnswer) {
+            if ($normalizedAnswer === $this->normalizeAnswer($validAnswer)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function normalizeAnswer(string $answer): string
+    {
+        return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $answer) ?? '');
     }
 
     private function isCompleted(string $slug): bool
