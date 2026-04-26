@@ -69,12 +69,12 @@ final class ChallengeController extends Controller
         if ($this->isValidAnswer($validator, $answer) && $flag !== '') {
             $_SESSION['answer_result'] = [
                 'type' => 'success',
-                'message' => 'Respuesta correcta. Tu flag es: ' . $flag,
+                'message' => 'Tu flag es: ' . $flag,
             ];
         } else {
             $_SESSION['answer_result'] = [
                 'type' => 'error',
-                'message' => 'Respuesta incorrecta. Revisa el resultado del escaneo.',
+                'message' => 'Revisa el resultado del escaneo.',
             ];
         }
 
@@ -190,6 +190,18 @@ final class ChallengeController extends Controller
             if ($needle !== '' && str_contains($normalizedAnswer, $needle)) {
                 return true;
             }
+        }
+
+        if (isset($validator['answer_contains_all']) && is_array($validator['answer_contains_all'])) {
+            foreach ($validator['answer_contains_all'] as $needle) {
+                $normalizedNeedle = $this->normalizeAnswer((string) $needle);
+
+                if ($normalizedNeedle === '' || !str_contains($normalizedAnswer, $normalizedNeedle)) {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         if (isset($validator['answer'])) {

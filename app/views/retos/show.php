@@ -36,7 +36,9 @@
     <section class="panel split-module">
         <article class="split-card">
             <h2>Notas del escaneo</h2>
-            <p>Escribe aqui el host, puerto o hallazgo que te entregue Nmap durante la exploracion.</p>
+            <p>Realizar el escaneo ver que puertos estan abiertos y escribir el comando completo para el escaneo de los puertos
+                por ejemplo: nmap "ip".
+            </p>
         </article>
         <article class="split-card">
             <h2>Verificar respuesta</h2>
@@ -52,9 +54,69 @@
     </section>
 
     <?php if (!empty($answerResult)): ?>
-        <div class="answer-modal" role="dialog" aria-modal="true" aria-labelledby="answer-modal-title">
+        <div class="answer-modal" role="dialog" aria-modal="true" aria-labelledby="answer-modal-title" onclick="if (event.target === this) this.remove();">
             <div class="answer-modal-card answer-modal-<?= htmlspecialchars($answerResult['type'], ENT_QUOTES, 'UTF-8'); ?>">
-                <button class="answer-modal-close" type="button" aria-label="Cerrar mensaje">x</button>
+                <button class="answer-modal-close" type="button" aria-label="Cerrar mensaje" onclick="this.closest('.answer-modal').remove();">x</button>
+                <strong id="answer-modal-title"><?= $answerResult['type'] === 'success' ? 'Respuesta correcta' : 'Respuesta incorrecta'; ?></strong>
+                <p><?= htmlspecialchars($answerResult['message'], ENT_QUOTES, 'UTF-8'); ?></p>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if ($reto['slug'] === 'reto03-puertos'): ?>
+    <section class="panel split-module">
+        <article class="split-card">
+            <h2>Analisis de puertos</h2>
+            <p>Realiza un escaneo de puertos sobre el objetivo y revisa cuales aparecen abiertos.</p>
+        </article>
+        <article class="split-card">
+            <h2>Verificar respuesta</h2>
+            <p>Escribe los puertos que estan abiertos</p>
+
+            <form class="answer-form" action="<?= htmlspecialchars(route('reto/respuesta'), ENT_QUOTES, 'UTF-8'); ?>" method="post">
+                <input type="hidden" name="slug" value="<?= htmlspecialchars($reto['slug'], ENT_QUOTES, 'UTF-8'); ?>">
+                <label class="field-label" for="port-answer">Respuesta</label>
+                <input id="port-answer" name="answer" type="text" autocomplete="off" required>
+                <button class="button" type="submit">Verificar respuesta</button>
+            </form>
+        </article>
+    </section>
+
+    <?php if (!empty($answerResult)): ?>
+        <div class="answer-modal" role="dialog" aria-modal="true" aria-labelledby="answer-modal-title" onclick="if (event.target === this) this.remove();">
+            <div class="answer-modal-card answer-modal-<?= htmlspecialchars($answerResult['type'], ENT_QUOTES, 'UTF-8'); ?>">
+                <button class="answer-modal-close" type="button" aria-label="Cerrar mensaje" onclick="this.closest('.answer-modal').remove();">x</button>
+                <strong id="answer-modal-title"><?= $answerResult['type'] === 'success' ? 'Respuesta correcta' : 'Respuesta incorrecta'; ?></strong>
+                <p><?= htmlspecialchars($answerResult['message'], ENT_QUOTES, 'UTF-8'); ?></p>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if ($reto['slug'] === 'reto04-servicios'): ?>
+    <section class="panel split-module">
+        <article class="split-card">
+            <h2>Enumeracion de servicios</h2>
+            <p>Analiza los servicios detectados y sus versiones. Usa la informacion del banner o el resultado de version detection para identificar la tecnologia expuesta.</p>
+        </article>
+        <article class="split-card">
+            <h2>Verificar respuesta</h2>
+            <p>Escribe el servicio o tecnologia principal que encontraste para revelar la flag del reto.</p>
+
+            <form class="answer-form" action="<?= htmlspecialchars(route('reto/respuesta'), ENT_QUOTES, 'UTF-8'); ?>" method="post">
+                <input type="hidden" name="slug" value="<?= htmlspecialchars($reto['slug'], ENT_QUOTES, 'UTF-8'); ?>">
+                <label class="field-label" for="service-answer">Respuesta</label>
+                <input id="service-answer" name="answer" type="text" autocomplete="off" required>
+                <button class="button" type="submit">Verificar respuesta</button>
+            </form>
+        </article>
+    </section>
+
+    <?php if (!empty($answerResult)): ?>
+        <div class="answer-modal" role="dialog" aria-modal="true" aria-labelledby="answer-modal-title" onclick="if (event.target === this) this.remove();">
+            <div class="answer-modal-card answer-modal-<?= htmlspecialchars($answerResult['type'], ENT_QUOTES, 'UTF-8'); ?>">
+                <button class="answer-modal-close" type="button" aria-label="Cerrar mensaje" onclick="this.closest('.answer-modal').remove();">x</button>
                 <strong id="answer-modal-title"><?= $answerResult['type'] === 'success' ? 'Respuesta correcta' : 'Respuesta incorrecta'; ?></strong>
                 <p><?= htmlspecialchars($answerResult['message'], ENT_QUOTES, 'UTF-8'); ?></p>
             </div>
@@ -63,13 +125,6 @@
 <?php endif; ?>
 
 <section class="panel flag-panel">
-    <?php if (!empty($flagResult)): ?>
-        <div class="flag-popup flag-popup-<?= htmlspecialchars($flagResult['type'], ENT_QUOTES, 'UTF-8'); ?>" role="alert">
-            <strong><?= $flagResult['type'] === 'success' ? 'Flag correcta' : 'Flag incorrecta'; ?></strong>
-            <span><?= htmlspecialchars($flagResult['message'], ENT_QUOTES, 'UTF-8'); ?></span>
-        </div>
-    <?php endif; ?>
-
     <div>
         <h2>Verificar flag</h2>
         <p>Ingresa la flag encontrada para validar tu progreso en este reto.</p>
@@ -95,3 +150,13 @@
         <?php endif; ?>
     </div>
 </section>
+
+<?php if (!empty($flagResult)): ?>
+    <div class="answer-modal" role="dialog" aria-modal="true" aria-labelledby="flag-modal-title" onclick="if (event.target === this) this.remove();">
+        <div class="answer-modal-card answer-modal-<?= htmlspecialchars($flagResult['type'], ENT_QUOTES, 'UTF-8'); ?>">
+            <button class="answer-modal-close" type="button" aria-label="Cerrar mensaje" onclick="this.closest('.answer-modal').remove();">x</button>
+            <strong id="flag-modal-title"><?= $flagResult['type'] === 'success' ? 'Flag correcta' : 'Flag incorrecta'; ?></strong>
+            <p><?= htmlspecialchars($flagResult['message'], ENT_QUOTES, 'UTF-8'); ?></p>
+        </div>
+    </div>
+<?php endif; ?>
