@@ -44,7 +44,7 @@ return [
         'dificultad' => 'Media',
         'puntaje' => 125,
         'objetivo' => 'Analizar servicios y versiones detectadas en los puertos abiertos para relacionarlos con configuraciones debiles o vulnerabilidades conocidas.',
-        'herramientas' => ['Nmap -sV', 'banner grabbing', 'version detection'],
+        'herramientas' => ['-sV', 'banner grabbing', 'version detection'],
         'estado' => 'Disponible',
     ],
     [
@@ -99,7 +99,7 @@ return [
         'dificultad' => 'Alta',
         'puntaje' => 175,
         'objetivo' => 'Analizar una imagen o archivo entregado como evidencia para descubrir informacion oculta en su interior.',
-        'herramientas' => ['strings', 'binwalk', 'steghide'],
+        'herramientas' => ['Winrar', 'Terminal', 'Propiedades del archivo'],
         'estado' => 'Disponible',
     ],
     [

@@ -102,7 +102,7 @@
         </article>
         <article class="split-card">
             <h2>Verificar respuesta</h2>
-            <p>Escribe el servicio o tecnologia principal que encontraste para revelar la flag del reto.</p>
+            <p>Escribe que servicios estan corriendo en los puertos para revelar la flag del reto.</p>
 
             <form class="answer-form" action="<?= htmlspecialchars(route('reto/respuesta'), ENT_QUOTES, 'UTF-8'); ?>" method="post">
                 <input type="hidden" name="slug" value="<?= htmlspecialchars($reto['slug'], ENT_QUOTES, 'UTF-8'); ?>">
