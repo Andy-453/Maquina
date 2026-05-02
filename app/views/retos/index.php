@@ -1,3 +1,4 @@
+<div class="backdrop-page">
 <section class="panel">
     <span class="eyebrow">RETOS</span>
     <h1>Desafíos Cibernéticos</h1>
@@ -25,3 +26,5 @@
         </article>
     <?php endforeach; ?>
 </section>
+
+</div>

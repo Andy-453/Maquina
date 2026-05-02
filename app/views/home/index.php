@@ -1,3 +1,4 @@
+<div class="backdrop-page">
 <section class="hero">
     <div class="hero-copy">
         <span class="eyebrow">REACH</span>
@@ -40,3 +41,5 @@
         <?php endforeach; ?>
     </div>
 </section>
+
+</div>

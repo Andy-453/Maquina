@@ -1,3 +1,4 @@
+<div class="backdrop-page">
 <section class="panel">
     <span class="eyebrow"><?= htmlspecialchars($reto['categoria'], ENT_QUOTES, 'UTF-8'); ?></span>
     <h1>Reto <?= htmlspecialchars((string) $reto['numero'], ENT_QUOTES, 'UTF-8'); ?>: <?= htmlspecialchars($reto['titulo'], ENT_QUOTES, 'UTF-8'); ?></h1>
@@ -160,3 +161,4 @@
         </div>
     </div>
 <?php endif; ?>
+</div>
