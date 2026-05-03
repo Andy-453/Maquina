@@ -92,8 +92,9 @@ return [
         'categoria' => 'Explotacion web',
         'dificultad' => 'Alta',
         'puntaje' => 175,
-        'objetivo' => 'Inyectar codigo JavaScript en la aplicacion para ejecutar acciones controladas dentro del navegador y demostrar impacto.',
-        'herramientas' => ['payloads XSS', 'DevTools', 'context analysis'],
+        'objetivo' => 'Este servicio permite a los usuarios publicar comentarios que son mostrados en tiempo real en la aplicación.
+Tu objetivo es analizar cómo se procesa la entrada del usuario e identificar si es posible ejecutar código en el navegador.',
+        'herramientas' => ['payloads XSS', 'DevTools', 'análisis de renderizado HTML', 'ejecución de eventos en el navegador'],
         'estado' => 'Disponible',
     ],
     [
@@ -104,7 +105,7 @@ return [
         'dificultad' => 'Alta',
         'puntaje' => 175,
         'objetivo' => 'Analizar una imagen o archivo entregado como evidencia para descubrir informacion oculta en su interior.',
-        'herramientas' => ['Winrar', 'Terminal', 'Propiedades del archivo'],
+        'herramientas' => ['Exiftool', 'Terminal', 'Propiedades del archivo','strings'],
         'estado' => 'Disponible',
     ],
     [

