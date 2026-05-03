@@ -142,6 +142,17 @@
     </section>
 <?php endif; ?>
 
+<?php if ($reto['slug'] === 'reto07-sqli-datos'): ?>
+    <section class="panel hint-module">
+        <h2>Pistas</h2>
+        <p>- El login no filtra correctamente lo que escribes… prueba pensar como la base de datos.</p>
+        <p>- No todo se trata de iniciar sesión… ¿y si puedes hacer que la consulta devuelva más información?</p>
+        <p>- Si usas UNION SELECT, recuerda que debes coincidir con el número de columnas de la consulta original.</p>
+        <p>- observa qué datos sí se muestran después del login…</p>
+        <p>- Puede que te encuentres algun "secret" por allí.</p>
+    </section>
+<?php endif; ?>
+
 <section class="panel flag-panel">
     <div>
         <h2>Verificar flag</h2>

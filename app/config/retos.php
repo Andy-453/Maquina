@@ -67,7 +67,7 @@ return [
         'dificultad' => 'Media',
         'puntaje' => 150,
         'objetivo' => 'Se ha identificado un formulario de autenticación dentro del servicio web. 
-            Analiza cómo se procesan los datos ingresados y determina si es posible acceder sin credenciales válidas.',
+            Analiza cómo se procesan los datos ingresados y determina si es posible acceder sin credenciales válidas. reto.php',
         'herramientas' => ['payloads SQLi', 'Navegador web', 'pruebas manuales de inyección SQL'],
         'estado' => 'Disponible',
     ],
@@ -78,8 +78,11 @@ return [
         'categoria' => 'Explotacion web',
         'dificultad' => 'Alta',
         'puntaje' => 150,
-        'objetivo' => 'Manipular consultas SQL para extraer informacion sensible desde la base de datos una vez identificado el vector de inyeccion.',
-        'herramientas' => ['UNION SELECT', 'SQLMap', 'enumeracion manual'],
+        'objetivo' => 'Manipula consultas SQL para extraer información sensible desde la base de datos.
+            El sistema valida credenciales, pero podría estar construyendo consultas de forma insegura.
+            Tu objetivo es ir más allá del login y obtener datos ocultos. reto1.php',
+        'herramientas' => ['UNION SELECT', 'Inyección SQL manual', 'Enumeración de columnas (ORDER BY)',
+            'Pruebas directamente en los campos del login'],
         'estado' => 'Disponible',
     ],
     [
