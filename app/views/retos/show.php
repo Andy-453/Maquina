@@ -103,7 +103,7 @@
         </article>
         <article class="split-card">
             <h2>Verificar respuesta</h2>
-            <p>Escribe que servicios estan corriendo en los puertos para revelar la flag del reto.</p>
+            <p>Que puerto adicional tiene un servicio HTTP activo?</p>
 
             <form class="answer-form" action="<?= htmlspecialchars(route('reto/respuesta'), ENT_QUOTES, 'UTF-8'); ?>" method="post">
                 <input type="hidden" name="slug" value="<?= htmlspecialchars($reto['slug'], ENT_QUOTES, 'UTF-8'); ?>">
@@ -123,6 +123,23 @@
             </div>
         </div>
     <?php endif; ?>
+<?php endif; ?>
+
+<?php if ($reto['slug'] === 'reto05-credenciales'): ?>
+    <section class="panel hint-module">
+        <h2>Pistas</h2>
+        <p>- No todos los servicios se encuentran en los puertos tradicionales. Explora más allá de lo evidente.</p>
+        <p>- Accede al servicio identificado y analiza cuidadosamente su contenido.</p>
+        <p>- No toda la información es visible directamente en la página.</p>
+    </section>
+<?php endif; ?>
+
+<?php if ($reto['slug'] === 'reto06-sqli-login'): ?>
+    <section class="panel hint-module">
+        <h2>Pistas</h2>
+        <p>- No siempre es necesario conocer la contraseña para acceder.</p>
+        <p>- Observa cómo se construyen las consultas al enviar datos.</p>
+    </section>
 <?php endif; ?>
 
 <section class="panel flag-panel">

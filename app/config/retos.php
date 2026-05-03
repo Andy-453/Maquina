@@ -50,12 +50,13 @@ return [
     [
         'slug' => 'reto05-credenciales',
         'numero' => 5,
-        'titulo' => 'Acceso por credenciales debiles',
+        'titulo' => 'Acceso a un servicio descubierto',
         'categoria' => 'Explotacion inicial',
         'dificultad' => 'Media',
         'puntaje' => 125,
-        'objetivo' => 'Intentar ingresar a un sistema utilizando combinaciones simples de usuario y contrasena derivadas del contexto del laboratorio.',
-        'herramientas' => ['credenciales por defecto', 'Hydra', 'wordlists basicas'],
+        'objetivo' => 'Se ha identificado un servicio web adicional durante la fase de enumeración. 
+            Explora este servicio y analiza su contenido en busca de información expuesta o accesos inseguros.',
+        'herramientas' => ['Navegador web', 'DevTools (inspección de elementos)', 'análisis de respuestas HTTP'],
         'estado' => 'Disponible',
     ],
     [
@@ -65,8 +66,9 @@ return [
         'categoria' => 'Explotacion web',
         'dificultad' => 'Media',
         'puntaje' => 150,
-        'objetivo' => 'Explotar una vulnerabilidad en el formulario de autenticacion para acceder sin credenciales validas.',
-        'herramientas' => ['payloads SQLi', 'Burp Suite', 'pruebas manuales'],
+        'objetivo' => 'Se ha identificado un formulario de autenticación dentro del servicio web. 
+            Analiza cómo se procesan los datos ingresados y determina si es posible acceder sin credenciales válidas.',
+        'herramientas' => ['payloads SQLi', 'Navegador web', 'pruebas manuales de inyección SQL'],
         'estado' => 'Disponible',
     ],
     [

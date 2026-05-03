@@ -3,6 +3,6 @@
 declare(strict_types=1);
 
 return [
-    'flag_format' => 'flag{login_bypass_*}',
+    'flag' => 'sql_B^Pa$$',
     'status' => 'pending',
 ];

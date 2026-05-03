@@ -6,6 +6,18 @@ require_once APP_PATH . '/helpers/url_helper.php';
 
 $currentUser = $_SESSION['user'] ?? null;
 $currentPoints = 0;
+$cssFile = PUBLIC_PATH . '/assets/css/app.css';
+$cssVersion = is_file($cssFile) ? (string) filemtime($cssFile) : '1';
+$requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$baseUrl = rtrim($config['base_url'] ?? '', '/');
+
+if ($baseUrl !== '' && str_starts_with($requestPath, $baseUrl)) {
+    $requestPath = substr($requestPath, strlen($baseUrl)) ?: '/';
+}
+
+$bodyClass = in_array($requestPath, ['/login', '/registro'], true)
+    ? 'auth-background'
+    : 'reach-background';
 
 if ($currentUser !== null) {
     $progressKey = (string) ($currentUser['username'] ?? 'guest');
@@ -20,9 +32,9 @@ if ($currentUser !== null) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars(($config['name'] ?? 'CTF REACH'), ENT_QUOTES, 'UTF-8'); ?></title>
     <meta name="description" content="<?= htmlspecialchars(($config['tagline'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
-    <link rel="stylesheet" href="<?= htmlspecialchars(asset('assets/css/app.css'), ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="stylesheet" href="<?= htmlspecialchars(asset('assets/css/app.css') . '?v=' . $cssVersion, ENT_QUOTES, 'UTF-8'); ?>">
 </head>
-<body>
+<body class="<?= htmlspecialchars($bodyClass, ENT_QUOTES, 'UTF-8'); ?>">
     <div class="page-shell">
         <header class="site-header">
             <a class="brand" href="<?= htmlspecialchars(route(), ENT_QUOTES, 'UTF-8'); ?>">

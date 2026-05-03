@@ -3,6 +3,6 @@
 declare(strict_types=1);
 
 return [
-    'flag_format' => 'flag{creds_*}',
+    'flag' => '$erVic1o_^ctiV*',
     'status' => 'pending',
 ];

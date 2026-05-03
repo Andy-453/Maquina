@@ -24,10 +24,10 @@
     </aside>
 </section>
 
-<section class="panel">
+<section class="panel featured-modules">
     <span class="eyebrow">Retos destacados</span>
     <h2>Primeros modulos</h2>
-    <div class="challenge-grid">
+    <div class="challenge-grid featured-grid">
         <?php foreach ($retos as $reto): ?>
             <article class="challenge-card">
                 <div class="challenge-top">

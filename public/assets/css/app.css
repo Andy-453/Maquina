@@ -34,6 +34,20 @@ body {
         linear-gradient(180deg, #07101d 0%, #0b1424 100%);
 }
 
+body.auth-background {
+    background:
+        linear-gradient(90deg, rgba(7, 16, 29, 0.5), rgba(7, 16, 29, 0.84)),
+        url("../img/espalda.jpg") center / cover fixed no-repeat,
+        #07101d;
+}
+
+body.reach-background {
+    background:
+        linear-gradient(90deg, rgba(7, 16, 29, 0.5), rgba(7, 16, 29, 0.84)),
+        url("../img/grupo.jpg") center / cover fixed no-repeat,
+        #07101d;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -168,20 +182,11 @@ select {
 }
 
 .backdrop-page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.32;
-    background: url("../img/grupo.jpg") center / cover no-repeat;
+    content: none;
 }
 
 .backdrop-page::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(180deg, rgba(7, 16, 29, 0.72), rgba(7, 16, 29, 0.88)),
-        rgba(9, 17, 31, 0.16);
+    content: none;
 }
 
 .backdrop-page > * {
@@ -288,20 +293,11 @@ select {
 }
 
 .auth-panel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.38;
-    background: url("../img/espalda.jpg") center / cover no-repeat;
+    content: none;
 }
 
 .auth-panel::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(90deg, rgba(7, 16, 29, 0.58), rgba(7, 16, 29, 0.86)),
-        rgba(9, 17, 31, 0.2);
+    content: none;
 }
 
 .auth-copy,
@@ -418,6 +414,14 @@ select {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+.featured-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.featured-grid .challenge-card {
+    min-width: 0;
+}
+
 .challenge-card {
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
@@ -434,6 +438,37 @@ select {
     margin-bottom: 1rem;
     color: var(--muted);
     font-size: 0.92rem;
+}
+
+.challenge-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: auto;
+}
+
+.challenge-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0.28rem 0.65rem;
+    border: 1px solid rgba(153, 172, 198, 0.26);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.challenge-status.completed {
+    border-color: rgba(75, 212, 167, 0.42);
+    color: var(--accent);
+    background: rgba(75, 212, 167, 0.12);
+}
+
+.challenge-status.pending {
+    border-color: rgba(153, 172, 198, 0.26);
 }
 
 .detail-grid {
@@ -461,6 +496,18 @@ select {
 
 .split-card h2,
 .split-card p {
+    margin: 0;
+}
+
+.hint-module {
+    display: grid;
+    gap: 0.65rem;
+    border-color: rgba(75, 212, 167, 0.34);
+    background: rgba(15, 31, 53, 0.78);
+}
+
+.hint-module h2,
+.hint-module p {
     margin: 0;
 }
 
@@ -659,6 +706,10 @@ select {
         grid-template-columns: 1fr;
     }
 
+    .featured-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .site-header {
         align-items: flex-start;
         flex-direction: column;
@@ -666,5 +717,11 @@ select {
 
     .hero-copy {
         padding: 1.5rem;
+    }
+}
+
+@media (max-width: 620px) {
+    .featured-grid {
+        grid-template-columns: 1fr;
     }
 }
