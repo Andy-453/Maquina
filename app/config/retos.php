@@ -67,7 +67,7 @@ return [
         'dificultad' => 'Media',
         'puntaje' => 150,
         'objetivo' => 'Se ha identificado un formulario de autenticación dentro del servicio web. 
-            Analiza cómo se procesan los datos ingresados y determina si es posible acceder sin credenciales válidas. reto.php',
+            Analiza cómo se procesan los datos ingresados y determina si es posible acceder sin credenciales válidas. login.php',
         'herramientas' => ['payloads SQLi', 'Navegador web', 'pruebas manuales de inyección SQL'],
         'estado' => 'Disponible',
     ],
@@ -80,7 +80,7 @@ return [
         'puntaje' => 150,
         'objetivo' => 'Manipula consultas SQL para extraer información sensible desde la base de datos.
             El sistema valida credenciales, pero podría estar construyendo consultas de forma insegura.
-            Tu objetivo es ir más allá del login y obtener datos ocultos. reto1.php',
+            Tu objetivo es ir más allá del login y obtener datos ocultos. login1.php',
         'herramientas' => ['UNION SELECT', 'Inyección SQL manual', 'Enumeración de columnas (ORDER BY)',
             'Pruebas directamente en los campos del login'],
         'estado' => 'Disponible',
@@ -93,7 +93,7 @@ return [
         'dificultad' => 'Alta',
         'puntaje' => 175,
         'objetivo' => 'Este servicio permite a los usuarios publicar comentarios que son mostrados en tiempo real en la aplicación.
-Tu objetivo es analizar cómo se procesa la entrada del usuario e identificar si es posible ejecutar código en el navegador.',
+Tu objetivo es analizar cómo se procesa la entrada del usuario e identificar si es posible ejecutar código en el navegador. xss.php',
         'herramientas' => ['payloads XSS', 'DevTools', 'análisis de renderizado HTML', 'ejecución de eventos en el navegador'],
         'estado' => 'Disponible',
     ],

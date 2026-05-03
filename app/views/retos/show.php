@@ -162,7 +162,7 @@
         <p>- No todo se trata de iniciar sesión… ¿y si puedes hacer que la consulta devuelva más información?</p>
         <p>- Si usas UNION SELECT, recuerda que debes coincidir con el número de columnas de la consulta original.</p>
         <p>- observa qué datos sí se muestran después del login…</p>
-        <p>- Puede que te encuentres algun "secret" por allí.</p>
+        <p>- Puede que te encuentres algun "secret" por ahí.</p>
     </section>
 <?php endif; ?>
 
