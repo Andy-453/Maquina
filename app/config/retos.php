@@ -104,7 +104,8 @@ Tu objetivo es analizar cómo se procesa la entrada del usuario e identificar si
         'categoria' => 'Analisis',
         'dificultad' => 'Alta',
         'puntaje' => 175,
-        'objetivo' => 'Analizar una imagen o archivo entregado como evidencia para descubrir informacion oculta en su interior.',
+        'objetivo' => 'Se ha detectado que uno de los archivos disponibles contiene información oculta.
+            Analiza cuidadosamente la imagen y determina si contiene datos adicionales incrustados.',
         'herramientas' => ['Exiftool', 'Terminal', 'Propiedades del archivo','strings'],
         'estado' => 'Disponible',
     ],

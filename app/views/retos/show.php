@@ -178,7 +178,9 @@
 <?php if ($reto['slug'] === 'reto09-stego'): ?>
     <section class="panel hint-module">
         <h2>Pistas</h2>
-        <p>- La imagen la has visto desde el inicio del ctf</p>
+        <p>- No todo lo que ves en una imagen es lo único que contiene.</p>
+        <p>- Algunos archivos pueden ocultarse dentro de otros sin alterar su apariencia.</p>
+        <p>- La imagen ya la has visto varias veces.</p>
     </section>
 <?php endif; ?>
 
