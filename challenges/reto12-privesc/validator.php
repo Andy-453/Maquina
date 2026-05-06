@@ -3,6 +3,6 @@
 declare(strict_types=1);
 
 return [
-    'flag_format' => 'flag{privesc_*}',
+    'flag' => 'Pr1v1l3g3_Esc4l4t10n',
     'status' => 'pending',
 ];

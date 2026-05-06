@@ -138,16 +138,12 @@ final class ChallengeController extends Controller
         $validator = $this->validatorFor($reto);
 
         if (isset($validator['flag'])) {
-            $flag = (string) $validator['flag'];
-
-            return hash_equals($flag, $submittedFlag)
-                || hash_equals('FLAG{' . $flag . '}', $submittedFlag)
-                || hash_equals('flag{' . $flag . '}', $submittedFlag);
+            return $this->matchesFlagValue((string) $validator['flag'], $submittedFlag);
         }
 
         if (isset($validator['flags']) && is_array($validator['flags'])) {
             foreach ($validator['flags'] as $flag) {
-                if (hash_equals((string) $flag, $submittedFlag)) {
+                if ($this->matchesFlagValue((string) $flag, $submittedFlag)) {
                     return true;
                 }
             }
@@ -162,9 +158,51 @@ final class ChallengeController extends Controller
         }
 
         $format = (string) $validator['flag_format'];
-        $pattern = '/^' . str_replace('\*', '.+', preg_quote($format, '/')) . '$/i';
 
-        return preg_match($pattern, $submittedFlag) === 1;
+        return $this->matchesFlagFormat($format, $submittedFlag);
+    }
+
+    private function matchesFlagValue(string $expectedFlag, string $submittedFlag): bool
+    {
+        $expectedCandidates = $this->flagCandidates($expectedFlag);
+        $submittedCandidates = $this->flagCandidates($submittedFlag);
+
+        foreach ($expectedCandidates as $expectedCandidate) {
+            foreach ($submittedCandidates as $submittedCandidate) {
+                if (hash_equals($expectedCandidate, $submittedCandidate)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private function matchesFlagFormat(string $format, string $submittedFlag): bool
+    {
+        foreach ($this->flagCandidates($format) as $formatCandidate) {
+            $pattern = '/^' . str_replace('\*', '.+', preg_quote($formatCandidate, '/')) . '$/i';
+
+            if (preg_match($pattern, $submittedFlag) === 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function flagCandidates(string $flag): array
+    {
+        $candidates = [$flag];
+
+        if (preg_match('/^flag\{(.+)\}$/i', $flag, $matches) === 1) {
+            $candidates[] = $matches[1];
+        } else {
+            $candidates[] = 'flag{' . $flag . '}';
+            $candidates[] = 'FLAG{' . $flag . '}';
+        }
+
+        return array_values(array_unique($candidates));
     }
 
     private function validatorFor(array $reto): array

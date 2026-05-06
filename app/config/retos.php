@@ -142,8 +142,11 @@ return [
         'categoria' => 'Post explotacion',
         'dificultad' => 'Experto',
         'puntaje' => 300,
-        'objetivo' => 'Elevar permisos dentro del sistema comprometido hasta obtener acceso de administrador o root y cerrar la cadena de ataque.',
-        'herramientas' => ['linpeas', 'sudo abuse', 'misconfiguraciones locales'],
+        'objetivo' => 'Tras obtener acceso inicial al sistema comprometido, 
+            el siguiente objetivo consiste en elevar privilegios hasta alcanzar acceso administrativo completo. 
+            Analiza la configuración local del sistema, 
+            identifica permisos inseguros y aprovecha errores de configuración para convertirte en root.',
+        'herramientas' => ['Enumeración local', 'sudo abuse', 'GTFOBins', 'análisis de permisos', 'post-explotación Linux'],
         'estado' => 'Disponible',
     ],
 ];

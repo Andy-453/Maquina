@@ -61,6 +61,10 @@
     <!-- nc 192.168.56.112 6667 // ejecutar luego Escribir algo para sacar la flag -->
 <?php endif; ?>
 
+<?php if ($reto['slug'] === 'reto12-privesc'): ?>
+    <!-- codigo para subir privilegios: sudo find . -exec /bin/sh \; -quit -->
+<?php endif; ?>
+
 <section class="panel">
     <h2>Herramientas y enfoque</h2>
     <p><?= htmlspecialchars(implode(', ', $reto['herramientas']), ENT_QUOTES, 'UTF-8'); ?></p>
@@ -227,9 +231,10 @@
 <?php if ($reto['slug'] === 'reto12-privesc'): ?>
     <section class="panel hint-module">
         <h2>Pistas</h2>
-        <p>- Empieza enumerando usuario actual, permisos y sistema operativo.</p>
-        <p>- Revisa binarios con permisos especiales, sudo y tareas configuradas localmente.</p>
-        <p>- Las herramientas automaticas ayudan, pero confirma manualmente el hallazgo antes de explotarlo.</p>
+        <p>- Empieza identificando el usuario actual y los permisos sudo disponibles sudo -l.</p>
+        <p>- Algunos binarios permitidos en sudo pueden utilizarse para ejecutar comandos arbitrarios.</p>
+        <p>- GTFOBins puede ayudarte a identificar tecnicas validas de escalada.</p>
+        <p>- La evidencia final permanece protegida dentro del sistema y requiere privilegios elevados para acceder.</p>
     </section>
 <?php endif; ?>
 
