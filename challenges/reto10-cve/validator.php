@@ -3,6 +3,6 @@
 declare(strict_types=1);
 
 return [
-    'flag_format' => 'flag{cve_*}',
+    'flag' => 'Cv3_3xPlot^ble',
     'status' => 'pending',
 ];

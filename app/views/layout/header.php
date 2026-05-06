@@ -61,7 +61,6 @@ if ($currentUser !== null) {
                     <a href="<?= htmlspecialchars(route('login'), ENT_QUOTES, 'UTF-8'); ?>">Login</a>
                     <a href="<?= htmlspecialchars(route('registro'), ENT_QUOTES, 'UTF-8'); ?>">Registro</a>
                 <?php endif; ?>
-                <a href="#arquitectura">Arquitectura</a>
             </nav>
         </header>
         <main class="site-main">

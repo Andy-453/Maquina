@@ -93,8 +93,8 @@ return [
         'dificultad' => 'Alta',
         'puntaje' => 175,
         'objetivo' => 'Este servicio permite a los usuarios publicar comentarios que son mostrados en tiempo real en la aplicación.
-Tu objetivo es analizar cómo se procesa la entrada del usuario e identificar si es posible ejecutar código en el navegador. xss.php',
-        'herramientas' => ['payloads XSS', 'DevTools', 'análisis de renderizado HTML', 'ejecución de eventos en el navegador'],
+            Tu objetivo es analizar cómo se procesa la entrada del usuario e identificar si es posible ejecutar código en el navegador. xss.php',
+        'herramientas' => ['Nmap', 'searchsploit', 'NVD', 'CVEs conocidas'],
         'estado' => 'Disponible',
     ],
     [
@@ -116,8 +116,9 @@ Tu objetivo es analizar cómo se procesa la entrada del usuario e identificar si
         'categoria' => 'Analisis',
         'dificultad' => 'Alta',
         'puntaje' => 200,
-        'objetivo' => 'Investigar vulnerabilidades conocidas asociadas a un servicio detectado y preparar la estrategia de explotacion mas viable.',
-        'herramientas' => ['NVD', 'Exploit-DB', 'searchsploit'],
+        'objetivo' => 'Se ha identificado un servicio potencialmente vulnerable ejecutándose en el sistema.
+            Analiza la versión detectada e investiga si existen vulnerabilidades conocidas asociadas. robots.php',
+        'herramientas' => ['NVD', 'análisis de versiones', 'searchsploit','CVEs conocidas','Nmap -sV','Inspección de pagina de servicio.'],
         'estado' => 'Disponible',
     ],
     [
@@ -127,8 +128,11 @@ Tu objetivo es analizar cómo se procesa la entrada del usuario e identificar si
         'categoria' => 'Explotacion',
         'dificultad' => 'Alta',
         'puntaje' => 225,
-        'objetivo' => 'Utilizar un exploit validado para obtener acceso remoto al sistema objetivo de forma controlada.',
-        'herramientas' => ['Metasploit', 'msfconsole', 'payloads'],
+        'objetivo' => 'Un servidor legado permanece activo dentro del entorno de pruebas de la organización. 
+            Informes previos indican que el servicio IRC podría contener una vulnerabilidad 
+            crítica utilizada históricamente para ejecución remota de comandos. 
+            Obtén acceso al sistema y recupera la evidencia solicitada.',
+        'herramientas' => ['Nmap', 'Metasploit Framework', 'msfconsole', 'payloads UNIX', 'reconocimiento de servicios', 'explotación remota'],
         'estado' => 'Disponible',
     ],
     [
