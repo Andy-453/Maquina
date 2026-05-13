@@ -112,13 +112,14 @@ return [
     [
         'slug' => 'reto10-cve',
         'numero' => 10,
-        'titulo' => 'Analisis de vulnerabilidades (CVE)',
+        'titulo' => 'Endpoint vulnerable en servicio web',
         'categoria' => 'Analisis',
         'dificultad' => 'Alta',
         'puntaje' => 200,
-        'objetivo' => 'Se ha identificado un servicio potencialmente vulnerable ejecutándose en el sistema.
-            Analiza la versión detectada e investiga si existen vulnerabilidades conocidas asociadas. robots.php',
-        'herramientas' => ['NVD', 'análisis de versiones', 'searchsploit','CVEs conocidas','Nmap -sV','Inspección de pagina de servicio.'],
+        'objetivo' => 'Se ha identificado un servicio web ejecutándose en el puerto 8080 del sistema objetivo.
+            Analiza cuidadosamente el comportamiento del endpoint expuesto e 
+            intenta descubrir funcionalidades ocultas o parámetros vulnerables que permitan obtener información sensible del sistema. robots.php',
+        'herramientas' => ['análisis de respuestas HTTP', 'inspección manual de endpoints', 'manipulación de parámetros GET','navegación web','Nmap -sV'],
         'estado' => 'Disponible',
     ],
     [

@@ -211,9 +211,10 @@
 <?php if ($reto['slug'] === 'reto10-cve'): ?>
     <section class="panel hint-module">
         <h2>Pistas</h2>
-        <p>- La versión del servicio puede ser más importante de lo que parece.</p>
-        <p>- Muchas vulnerabilidades conocidas están documentadas públicamente.</p>
-        <p>- Investiga si la versión detectada tiene historial de CVEs.</p>
+        <p>- El puerto 8080 contiene un servicio adicional diferente al portal principal.</p>
+        <p>- Algunos parámetros GET pueden modificar el comportamiento de la página.</p>
+        <p>- Intenta interactuar directamente con la URL.</p>
+        <p>- El parámetro correcto devuelve información sensible.</p>
     </section>
 <?php endif; ?>
 
